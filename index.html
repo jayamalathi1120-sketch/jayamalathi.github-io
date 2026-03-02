@@ -1,194 +1,896 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jaya Malathi | Full Stack Developer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }body {
-        background: #f4f6f9;
-        color: #333;
-        line-height: 1.6;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jaya Malathi M — PHP Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #fdf8f2;
+    --warm-white: #fffcf8;
+    --sand: #e8ddd0;
+    --terracotta: #c7714e;
+    --terracotta-light: #e8956d;
+    --deep: #2a1f1a;
+    --mid: #5a4a42;
+    --soft: #8a7a72;
+    --accent: #d4a373;
+  }
 
-    header {
-        background: linear-gradient(135deg, #4f46e5, #7c3aed);
-        color: white;
-        padding: 60px 20px;
-        text-align: center;
-    }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    header h1 {
-        font-size: 40px;
-        margin-bottom: 10px;
-    }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--deep);
+    overflow-x: hidden;
+  }
 
-    header p {
-        font-size: 18px;
-        opacity: 0.9;
-    }
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
 
-    .container {
-        width: 90%;
-        max-width: 1100px;
-        margin: 40px auto;
-    }
+  .hero-left {
+    background: var(--deep);
+    padding: 80px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
 
-    section {
-        margin-bottom: 50px;
-    }
+  .hero-left::after {
+    content: '';
+    position: absolute;
+    right: -60px;
+    top: 0;
+    width: 120px;
+    height: 100%;
+    background: var(--deep);
+    clip-path: polygon(0 0, 50% 0, 100% 100%, 0 100%);
+    z-index: 2;
+  }
 
-    h2 {
-        font-size: 28px;
-        margin-bottom: 20px;
-        color: #4f46e5;
-    }
+  .initials {
+    font-family: 'Playfair Display', serif;
+    font-size: 140px;
+    font-weight: 900;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255,255,255,0.15);
+    position: absolute;
+    bottom: 40px;
+    right: -20px;
+    pointer-events: none;
+    z-index: 1;
+  }
 
-    .card {
-        background: white;
-        padding: 25px;
-        border-radius: 12px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-        margin-bottom: 20px;
-        transition: 0.3s;
-    }
+  .hero-tag {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--terracotta-light);
+    border: 1px solid var(--terracotta);
+    padding: 6px 14px;
+    border-radius: 2px;
+    margin-bottom: 32px;
+    width: fit-content;
+    animation: fadeUp 0.8s ease forwards;
+    opacity: 0;
+  }
 
-    .card:hover {
-        transform: translateY(-5px);
-    }
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 5vw, 68px);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    animation: fadeUp 0.8s 0.2s ease forwards;
+    opacity: 0;
+  }
 
-    .skills {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 15px;
-    }
+  .hero-name span {
+    color: var(--terracotta-light);
+  }
 
-    .skills div {
-        background: #eef2ff;
-        padding: 10px 15px;
-        border-radius: 8px;
-        text-align: center;
-        font-weight: 500;
-    }
+  .hero-desc {
+    font-size: 15px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.6);
+    max-width: 380px;
+    animation: fadeUp 0.8s 0.4s ease forwards;
+    opacity: 0;
+  }
 
-    .projects {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 20px;
-    }
+  .hero-right {
+    background: var(--warm-white);
+    padding: 80px 80px 80px 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 
-    .contact p {
-        margin-bottom: 10px;
-    }
+  .contact-block {
+    animation: fadeUp 0.8s 0.6s ease forwards;
+    opacity: 0;
+  }
 
-    footer {
-        text-align: center;
-        padding: 20px;
-        background: #111827;
-        color: white;
-        margin-top: 40px;
-    }
+  .contact-block h3 {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--soft);
+    margin-bottom: 28px;
+  }
 
-    .btn {
-        display: inline-block;
-        margin-top: 15px;
-        padding: 10px 20px;
-        background: white;
-        color: #4f46e5;
-        border-radius: 25px;
-        text-decoration: none;
-        font-weight: 600;
-        transition: 0.3s;
-    }
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+    text-decoration: none;
+    color: var(--deep);
+    transition: transform 0.2s ease;
+    padding: 14px 18px;
+    border: 1px solid var(--sand);
+    border-radius: 6px;
+    background: var(--cream);
+  }
 
-    .btn:hover {
-        background: #ddd6fe;
-    }
+  .contact-item:hover {
+    transform: translateX(6px);
+    border-color: var(--terracotta);
+    background: #fff;
+  }
 
-    @media (max-width: 600px) {
-        header h1 {
-            font-size: 28px;
-        }
-    }
+  .contact-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--terracotta);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .contact-icon svg {
+    width: 18px;
+    height: 18px;
+    fill: #fff;
+  }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .contact-label {
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--soft);
+  }
+
+  .contact-value {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--deep);
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 100px 80px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 60px;
+    color: var(--deep);
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .about-text {
+    font-size: 16px;
+    line-height: 1.9;
+    color: var(--mid);
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .stat-card {
+    background: var(--warm-white);
+    border: 1px solid var(--sand);
+    padding: 28px 24px;
+    border-radius: 8px;
+    transition: border-color 0.3s;
+  }
+
+  .stat-card:hover { border-color: var(--terracotta); }
+
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 900;
+    color: var(--terracotta);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: var(--soft);
+    letter-spacing: 1px;
+  }
+
+  /* EXPERIENCE */
+  .exp-section {
+    background: var(--deep);
+    padding: 100px;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .exp-section .section-title { color: #fff; }
+
+  .exp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .exp-card {
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 36px;
+    position: relative;
+    transition: border-color 0.3s, background 0.3s;
+  }
+
+  .exp-card:hover {
+    border-color: var(--terracotta);
+    background: rgba(199,113,78,0.05);
+  }
+
+  .exp-card::before {
+    content: '';
+    position: absolute;
+    top: 36px;
+    left: 0;
+    width: 3px;
+    height: 36px;
+    background: var(--terracotta);
+    border-radius: 0 2px 2px 0;
+  }
+
+  .exp-duration {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--terracotta-light);
+    margin-bottom: 12px;
+  }
+
+  .exp-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+
+  .exp-company {
+    font-size: 13px;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 20px;
+  }
+
+  .exp-points {
+    list-style: none;
+  }
+
+  .exp-points li {
+    font-size: 14px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.7;
+    margin-bottom: 8px;
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .exp-points li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--terracotta);
+  }
+
+  /* SKILLS */
+  .skills-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+  }
+
+  .skill-group h4 {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--soft);
+    margin-bottom: 24px;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .skill-tag {
+    padding: 8px 18px;
+    border: 1px solid var(--sand);
+    border-radius: 100px;
+    font-size: 13px;
+    color: var(--mid);
+    background: var(--warm-white);
+    transition: all 0.2s;
+    cursor: default;
+  }
+
+  .skill-tag:hover {
+    border-color: var(--terracotta);
+    color: var(--terracotta);
+    background: rgba(199,113,78,0.05);
+  }
+
+  /* EDUCATION */
+  .edu-timeline {
+    border-left: 2px solid var(--sand);
+    padding-left: 40px;
+    margin-left: 20px;
+  }
+
+  .edu-item {
+    position: relative;
+    margin-bottom: 48px;
+  }
+
+  .edu-item::before {
+    content: '';
+    position: absolute;
+    left: -49px;
+    top: 6px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--terracotta);
+    border: 3px solid var(--cream);
+    box-shadow: 0 0 0 2px var(--terracotta);
+  }
+
+  .edu-year {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--terracotta);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .edu-degree {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    margin-bottom: 4px;
+    color: var(--deep);
+  }
+
+  .edu-school {
+    font-size: 14px;
+    color: var(--soft);
+  }
+
+  .edu-score {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 12px;
+    background: var(--terracotta);
+    color: #fff;
+    padding: 3px 12px;
+    border-radius: 100px;
+  }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .project-card {
+    background: var(--warm-white);
+    border: 1px solid var(--sand);
+    border-radius: 8px;
+    padding: 32px 28px;
+    transition: all 0.3s;
+    cursor: default;
+  }
+
+  .project-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--terracotta);
+    box-shadow: 0 20px 40px rgba(199,113,78,0.1);
+  }
+
+  .project-icon {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, var(--terracotta), var(--accent));
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    font-size: 22px;
+  }
+
+  .project-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: var(--deep);
+  }
+
+  .project-tech {
+    font-size: 12px;
+    color: var(--terracotta);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .project-desc {
+    font-size: 13px;
+    color: var(--soft);
+    line-height: 1.7;
+  }
+
+  /* CERTS */
+  .certs-section {
+    background: linear-gradient(135deg, #f5ede3, #fdf8f2);
+    border-top: 1px solid var(--sand);
+    border-bottom: 1px solid var(--sand);
+    padding: 80px;
+  }
+
+  .certs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .cert-item {
+    padding: 20px 24px;
+    border-left: 3px solid var(--terracotta);
+    background: #fff;
+    border-radius: 0 6px 6px 0;
+    font-size: 13px;
+    color: var(--mid);
+    line-height: 1.5;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--deep);
+    padding: 60px 80px;
+    text-align: center;
+  }
+
+  .footer-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+
+  .footer-role {
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--terracotta-light);
+    margin-bottom: 32px;
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .footer-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: rgba(255,255,255,0.6);
+    font-size: 13px;
+    padding: 10px 20px;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 100px;
+    transition: all 0.2s;
+  }
+
+  .footer-link:hover {
+    color: #fff;
+    border-color: var(--terracotta);
+    background: rgba(199,113,78,0.1);
+  }
+
+  .footer-link svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+  }
+
+  .footer-copy {
+    margin-top: 40px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-left::after { display: none; }
+    .hero-right { padding: 60px 40px; }
+    .hero-left { padding: 60px 40px; min-height: 60vh; }
+    .about-grid, .skills-wrapper, .exp-grid, .projects-grid, .certs-grid { grid-template-columns: 1fr; }
+    section, .exp-section, .certs-section, footer { padding: 60px 32px; }
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+  }
 </style>
-
 </head>
-<body><header>
-    <h1>Jaya Malathi</h1>
-    <p>Full Stack Developer | React.js | Node.js | PHP | Laravel</p>
-    <a href="#contact" class="btn">Contact Me</a>
-</header><div class="container"><section>
-    <h2>About Me</h2>
-    <div class="card">
-        <p>
-            I am a passionate Full Stack Developer with experience in building scalable and user-friendly web applications. 
-            I specialize in React.js for frontend development and Node.js / PHP (Laravel) for backend systems. 
-            I enjoy solving real-world problems and continuously improving my technical skills.
-        </p>
-    </div>
-</section>
+<body>
 
-<section>
-    <h2>Technical Skills</h2>
-    <div class="skills">
-        <div>React.js</div>
-        <div>Python</div>
-        <div>PHP</div>
-        <div>Laravel</div>
-        <div>MySQL</div>
-        <div>PostgreSQL</div>
-        <div>Git & GitHub</div>
-    </div>
-</section>
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Available for Opportunities</div>
+    <h1 class="hero-name">Jaya<br>Malathi<span>.</span>M</h1>
+    <p class="hero-desc">PHP Developer &amp; Process Engineer with expertise in Laravel, React JS, and MySQL. Passionate about building clean, efficient web applications.</p>
+    <div class="initials">JM</div>
+  </div>
+  <div class="hero-right">
+    <div class="contact-block">
+      <h3>Get in touch</h3>
 
-<section>
-    <h2>Projects</h2>
-    <div class="projects">
-        <div class="card">
-            <h3>CAR DEALER DATA WARE HOUSING MANAGEMENT SYSTEM FOR AUTOMOBILE SHOP</h3>
-            <p>The complete details about the vehicle will be display in the site where the customer 
-can view the total details about the vehicle so that they can have a better idea about the vehicle 
-before purchasing the vehicle. The main idea is to monitor the transaction of the vehicle details 
-should be maintained in a detailed manner so that their will be no change of transaction after 
-entering.
-Another feature is the details about the new vehicle can be updated from the main dealer itself 
-where it can be monitored by the sub dealers there is no requirement of the change of plan in the 
-sub dealers. The project also maintains the customer details who are all purchased the vehicle 
-from the company.</p>
-            <p><strong>Tech Used:</strong> ASP.NET ,c#.net ,MySQL</p>
+      <a href="mailto:jayamalathi1120@gmail.com" class="contact-item">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
         </div>
-        <div class="card">
-            <h3>BUILDING CONSTRUCTION DESIGN MANAGEMENT </h3>
-            <p>Mobile Application for building design to the engineers and architecture
-and the user.
-The user can get the idea of the building design from this app.
-They can view the blueprint of the building design.
-Maintain the all records.</p>
-            <p><strong>Tech Used:</strong>React.NATIVE, Node.js, MySQL</p>
+        <div class="contact-info">
+          <span class="contact-label">Email</span>
+          <span class="contact-value">jayamalathi1120@gmail.com</span>
         </div>
+      </a>
+
+      <a href="tel:9363069150" class="contact-item">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        </div>
+        <div class="contact-info">
+          <span class="contact-label">Phone</span>
+          <span class="contact-value">+91 9363069150</span>
+        </div>
+      </a>
+
+      <a href="https://github.com/jayamalathi1120" target="_blank" class="contact-item">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.66-.22.66-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85 0 1.71.11 2.51.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.16.58.67.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/></svg>
+        </div>
+        <div class="contact-info">
+          <span class="contact-label">GitHub</span>
+          <span class="contact-value">github.com/jayamalathi</span>
+        </div>
+      </a>
+
+      <a href="https://www.linkedin.com/in/jayamalathi1120/" target="_blank" class="contact-item">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14m-.5 15.5v-5.3a3.26 3.26 0 00-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 011.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 001.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 00-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+        </div>
+        <div class="contact-info">
+          <span class="contact-label">LinkedIn</span>
+          <span class="contact-value">linkedin.com/in/jayamalathi1120</span>
+        </div>
+      </a>
     </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="reveal">
+  <div class="section-label">About Me</div>
+  <div class="section-title">Building digital solutions<br>with purpose</div>
+  <div class="about-grid">
+    <div class="about-text">
+      PHP Developer with 6 months of specialized web development experience and 2 years of technical process experience. Proficient in building and maintaining web applications using PHP, Laravel, and MySQL. Strong foundation in frontend technologies with React JS, and committed to writing clean, efficient code within a collaborative team environment.
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-number">2+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">3+</div>
+        <div class="stat-label">Web Projects</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">7.2</div>
+        <div class="stat-label">MCA CGPA</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">6+</div>
+        <div class="stat-label">Certifications</div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="contact" class="contact">
-    <h2>Contact</h2>
-    <div class="card">
-        <p><strong>Email:</strong> jayamalathi1120@gmail.com</p>
-        <p><strong>Phone:</strong> +91 9363069150 </p>
-        <button class="btn-rounded btn btn-outline-primary mt-4"><a href="https://github.com/jayamalathi1120-sketch">GitHub</a></button>
-        <button class="btn-rounded btn btn-outline-primary mt-4"><a href="https://www.linkedin.com/in/jayamalathi-muthu-5546b2213?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">LinkedIn</a></button>   
-    </div> 
-</section>
-    <footer>   
-    © 2026 Jaya Malathi | All Rights Reserved
-</footer></body>
+<!-- EXPERIENCE -->
+<div class="exp-section">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="section-label" style="color:var(--terracotta-light)">Career</div>
+    <div class="section-title">Work Experience</div>
+    <div class="exp-grid">
+      <div class="exp-card reveal">
+        <div class="exp-duration">2 Years · Process Engineer</div>
+        <div class="exp-title">Process Engineer</div>
+        <div class="exp-company">Hiya Technology Solutions</div>
+        <ul class="exp-points">
+          <li>Maintained organized records and updated existing records with new data</li>
+          <li>Managed and operated MySQL database server</li>
+          <li>Ensured data integrity and accuracy across systems</li>
+        </ul>
+      </div>
+      <div class="exp-card reveal">
+        <div class="exp-duration">6 Months · Web Development</div>
+        <div class="exp-title">Junior PHP Developer</div>
+        <div class="exp-company">Cron24 Technologies</div>
+        <ul class="exp-points">
+          <li>Developed and maintained web applications using PHP and Laravel</li>
+          <li>Built Hyra — a property rental platform</li>
+          <li>Contributed to Hyra Space and Savory Eats projects</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
 
+<!-- SKILLS -->
+<section class="reveal">
+  <div class="section-label">Expertise</div>
+  <div class="section-title">Technical Skills</div>
+  <div class="skills-wrapper">
+    <div class="skill-group">
+      <h4>Frontend</h4>
+      <div class="skill-tags">
+        <span class="skill-tag">React JS</span>
+        <span class="skill-tag">HTML5</span>
+        <span class="skill-tag">CSS3</span>
+        <span class="skill-tag">Bootstrap</span>
+        <span class="skill-tag">React Native</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>Backend &amp; Database</h4>
+      <div class="skill-tags">
+        <span class="skill-tag">PHP</span>
+        <span class="skill-tag">Laravel</span>
+        <span class="skill-tag">MySQL</span>
+        <span class="skill-tag">ASP.NET</span>
+        <span class="skill-tag">Python</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>Tools &amp; Analytics</h4>
+      <div class="skill-tags">
+        <span class="skill-tag">Excel</span>
+        <span class="skill-tag">Power BI</span>
+        <span class="skill-tag">MS Excel</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>Soft Skills</h4>
+      <div class="skill-tags">
+        <span class="skill-tag">Problem Solving</span>
+        <span class="skill-tag">Team Player</span>
+        <span class="skill-tag">Active Listener</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="reveal" style="padding-top:0">
+  <div class="section-label">Portfolio</div>
+  <div class="section-title">Projects</div>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-icon">🚗</div>
+      <div class="project-name">Car Dealer Data Warehousing</div>
+      <div class="project-tech">ASP.NET</div>
+      <div class="project-desc">Management system for automobile shops — data warehousing and reporting for car dealership operations.</div>
+    </div>
+    <div class="project-card">
+      <div class="project-icon">🏗️</div>
+      <div class="project-name">Building Construction Design</div>
+      <div class="project-tech">React Native</div>
+      <div class="project-desc">Mobile application for building construction design management, enabling project tracking on the go.</div>
+    </div>
+    <div class="project-card">
+      <div class="project-icon">🍽️</div>
+      <div class="project-name">Savory Eats</div>
+      <div class="project-tech">PHP · Laravel</div>
+      <div class="project-desc">Food ordering web application built during internship at Cron24 Technologies using Laravel framework.</div>
+    </div>
+    <div class="project-card">
+      <div class="project-icon">🏠</div>
+      <div class="project-name">Hyra &amp; Hyra Space</div>
+      <div class="project-tech">PHP · Laravel</div>
+      <div class="project-desc">Property rental platform with space booking functionality, developed at Cron24 Technologies.</div>
+    </div>
+    <div class="project-card">
+      <div class="project-icon">📊</div>
+      <div class="project-name">Production Data Analysis</div>
+      <div class="project-tech">MS Excel · Power BI</div>
+      <div class="project-desc">Collected and analyzed production data using Excel, created a performance tracking dashboard.</div>
+    </div>
+    <div class="project-card">
+      <div class="project-icon">🌐</div>
+      <div class="project-name">Web Mini Project</div>
+      <div class="project-tech">HTML · CSS</div>
+      <div class="project-desc">A responsive website built with HTML and CSS as a foundational frontend development project.</div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="reveal" style="background:var(--warm-white);max-width:100%;padding:100px 80px;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="section-label">Academic</div>
+    <div class="section-title">Education</div>
+    <div class="edu-timeline">
+      <div class="edu-item">
+        <div class="edu-year">2021 – 2023</div>
+        <div class="edu-degree">Master of Computer Applications (MCA)</div>
+        <div class="edu-school">Madurai Kamaraj University, Madurai</div>
+        <span class="edu-score">CGPA: 7.2</span>
+      </div>
+      <div class="edu-item">
+        <div class="edu-year">2018 – 2021</div>
+        <div class="edu-degree">Bachelor of Computer Science (B.Sc)</div>
+        <div class="edu-school">Sri Sarada Mahavidyalaya, Thiruvalluvar University</div>
+        <span class="edu-score">CGPA: 7.7</span>
+      </div>
+      <div class="edu-item">
+        <div class="edu-year">2017 – 2018</div>
+        <div class="edu-degree">Higher Secondary (HSC)</div>
+        <div class="edu-school">NLC Girls Higher Secondary School, Neyveli</div>
+        <span class="edu-score">48%</span>
+      </div>
+      <div class="edu-item">
+        <div class="edu-year">2015 – 2016</div>
+        <div class="edu-degree">Secondary School (SSLC)</div>
+        <div class="edu-school">Vallalar Matriculation Higher Secondary School</div>
+        <span class="edu-score">72%</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<div class="certs-section">
+  <div class="section-label">Achievements</div>
+  <div class="section-title" style="max-width:1100px;margin:0 auto 40px;">Certifications &amp; Awards</div>
+  <div class="certs-grid reveal">
+    <div class="cert-item">International Webinar on Cloud Computing — Sri Sarada Mahavidyalaya</div>
+    <div class="cert-item">National Service Scheme — Government Arts College, Trichy</div>
+    <div class="cert-item">Instructional System Design — Madurai Kamaraj University</div>
+    <div class="cert-item">Python — RUSA Certified</div>
+    <div class="cert-item">AWS — RUSA Certified</div>
+    <div class="cert-item">React JS — SRV Certified</div>
+    <div class="cert-item">PHP Development Internship — Cron24 Technologies (Offline Training)</div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Jaya Malathi M</div>
+  <div class="footer-role">PHP Developer · Process Engineer</div>
+  <div class="footer-links">
+    <a href="mailto:jayamalathi1120@gmail.com" class="footer-link">
+      <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      Email Me
+    </a>
+    <a href="tel:9363069150" class="footer-link">
+      <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+      Call Me
+    </a>
+    <a href="https://github.com/jayamalathi1120" target="_blank" class="footer-link">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.66-.22.66-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85 0 1.71.11 2.51.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.16.58.67.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/></svg>
+      GitHub
+    </a>
+    <a href="https://www.linkedin.com/in/jayamalathi1120/" target="_blank" class="footer-link">
+      <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14m-.5 15.5v-5.3a3.26 3.26 0 00-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 011.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 001.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 00-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+      LinkedIn
+    </a>
+  </div>
+  <div class="footer-copy">© 2025 Jaya Malathi M · All rights reserved</div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
 </html>
-
-
-
-
